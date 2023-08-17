@@ -7,14 +7,11 @@ const commentsDisplay = document.getElementById('comments-display');
 function appendComment(c) {
   const comment = document.createElement('div');
   const commentHeader = document.createElement('header');
-  commentHeader.innerText = `${c.username} schreibt:`;
+  commentHeader.innerText = `Am ${new Date(c.createdAt).toLocaleString()} von ${c.origin} schreibt ${c.username}:`;
   const commentBody = document.createElement('div');
   commentBody.innerText = c.message;
-  const commentFooter = document.createElement('footer');
-  commentFooter.innerText = `Am xy von ${c.origin}`;
   comment.appendChild(commentHeader);
   comment.appendChild(commentBody);
-  comment.appendChild(commentFooter);
   commentsDisplay.appendChild(comment);
 }
 

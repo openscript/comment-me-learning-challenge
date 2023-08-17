@@ -10,7 +10,7 @@ router.get('/1', async (req, res, next) => {
   const jwt = await new SignJWT({ 'challenge': '1' })
     .setProtectedHeader({ alg })
     .setIssuer(issuer)
-    .setExpirationTime('10h')
+    .setExpirationTime('3h')
     .sign(secret);
   res.header({ Authorization: jwt });
   res.send();
