@@ -1,6 +1,4 @@
-const socket = new WebSocket(
-  "ws://localhost:3000"
-);
+const socket = new WebSocket(`ws://${location.host}`);
 
 const commentsDisplay = document.getElementById('comments-display');
 

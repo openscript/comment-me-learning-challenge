@@ -1,9 +1,10 @@
 import { Router } from 'express';
 import { SignJWT } from 'jose';
+import { configuration } from '../conf.js';
 
 const router = Router();
 const alg = 'HS256';
-export const secret = new TextEncoder().encode('C3x?ncj55j=rxRKZg*DF=tQiq<mFUcyJ!Un5Ki4j');
+export const secret = new TextEncoder().encode(configuration ?? 'C3x?ncj55j=rxRKZg*DF=tQiq<mFUcyJ!Un5Ki4j');
 export const issuer = 'comment-me';
 
 router.get('/1', async (req, res, next) => {
