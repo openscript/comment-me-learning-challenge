@@ -1,21 +1,29 @@
 {
   "name": "comment-me-learning-challenge",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www"
   },
-  "bin": {"www": "./bin/www.js"},
+  "bin": {
+    "www": "./bin/www.js"
+  },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "^4.3.4",
+    "ejs": "^3.1.9",
     "express": "^4.18.2",
-    "hbs": "^4.2.0",
     "http-errors": "^2.0.0",
-    "morgan": "^1.10.0"
+    "jose": "^4.14.4",
+    "morgan": "^1.10.0",
+    "sequelize": "^6.32.1",
+    "sqlite3": "^5.1.6",
+    "ws": "^8.13.0"
   },
   "devDependencies": {
+    "nodemon": "^3.0.1",
     "npm-check": "^6.0.1"
   }
 }
