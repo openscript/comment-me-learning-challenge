@@ -2,6 +2,7 @@ import createError from 'http-errors';
 import express, { json, urlencoded, static as staticFiles } from 'express';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
+import cors from 'cors';
 
 import indexRouter from './routes/index.js';
 import challengesRouter from './routes/challenges.js';
@@ -21,6 +22,7 @@ app.set('view engine', 'ejs');
 // load middlewares
 app.use(logger('dev'));
 app.use(json());
+app.use(cors());
 app.use(urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(staticFiles("./public"));
