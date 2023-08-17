@@ -9,7 +9,11 @@ const Comment = sequelize.define("Comment", {
   },
   message: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      min: 3,
+      max: 300
+    }
   },
   origin: {
     type: DataTypes.STRING,
@@ -20,7 +24,11 @@ const Comment = sequelize.define("Comment", {
   },
   username: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      min: 3,
+      max: 16
+    }
   }
 })
 
