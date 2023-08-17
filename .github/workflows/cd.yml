@@ -53,7 +53,7 @@ jobs:
             # set latest tag for master branch
             type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'main') }}
 
-      - name: Buid and push Docker Image
+      - name: Build and push Docker Image
         uses: docker/build-push-action@v4
         with:
           context: .
