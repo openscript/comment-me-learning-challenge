@@ -4,7 +4,7 @@ const socket = new WebSocket(
 
 const commentsDisplay = document.getElementById('comments-display');
 
-function appendComment(c) {
+function prependComment(c) {
   const comment = document.createElement('div');
   const commentHeader = document.createElement('header');
   commentHeader.innerText = `Am ${new Date(c.createdAt).toLocaleString()} von ${c.origin} schreibt ${c.username}:`;
@@ -12,7 +12,7 @@ function appendComment(c) {
   commentBody.innerText = c.message;
   comment.appendChild(commentHeader);
   comment.appendChild(commentBody);
-  commentsDisplay.appendChild(comment);
+  commentsDisplay.prepend(comment);
 }
 
 socket.addEventListener('message', (event) => {
@@ -22,11 +22,11 @@ socket.addEventListener('message', (event) => {
     const comments = message.data;
     commentsDisplay.innerText = '';
     comments.forEach((c) => {
-      appendComment(c);
+      prependComment(c);
     })
   }
 
   if (message.type === 'new_comment') {
-    appendComment(message.data);
+    prependComment(message.data);
   }
 });
