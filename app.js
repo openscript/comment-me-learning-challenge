@@ -22,7 +22,7 @@ app.set('view engine', 'ejs');
 // load middlewares
 app.use(logger('dev'));
 app.use(json());
-app.use(cors({ exposedHeaders: "Authorization", allowedHeaders: "Authorization" }));
+app.use(cors({ exposedHeaders: "Authorization", allowedHeaders: ["Authorization", "Content-Type"] }));
 app.use(urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(staticFiles("./public"));
