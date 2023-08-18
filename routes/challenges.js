@@ -14,6 +14,7 @@ router.post('/1', async (req, res, next) => {
     .setExpirationTime('3s')
     .sign(secret);
   res.header({ Authorization: jwt });
+  res.status(201);
   res.send();
 });
 

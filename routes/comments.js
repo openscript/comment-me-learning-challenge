@@ -19,9 +19,10 @@ router.post('/', async (req, res, next) => {
   try {
     await newComment.save();
   } catch (error) {
-    res.status(422);
+    res.sendStatus(422);
+    return;
   }
-  res.send(newComment);
+  res.status(201).send(newComment);
 });
 
 router.get('/', async (req, res, next) => {
