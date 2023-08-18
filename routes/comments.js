@@ -19,8 +19,8 @@ router.post('/', async (req, res, next) => {
   try {
     await newComment.save();
   } catch (error) {
-    res.body(error);
-    res.sendStatus(422);
+    res.status(422);
+    res.send(error);
     return;
   }
   res.status(201).send(newComment);
