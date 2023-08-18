@@ -7,7 +7,7 @@ const alg = 'HS256';
 export const secret = new TextEncoder().encode(configuration ?? 'C3x?ncj55j=rxRKZg*DF=tQiq<mFUcyJ!Un5Ki4j');
 export const issuer = 'comment-me';
 
-router.get('/1', async (req, res, next) => {
+router.post('/1', async (req, res, next) => {
   const jwt = await new SignJWT({ 'challenge': '1' })
     .setProtectedHeader({ alg })
     .setIssuer(issuer)
