@@ -15,11 +15,11 @@ router.post('/', async (req, res, next) => {
     return;
   }
   const origin = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-  console.log({ ...req.body, origin });
   const newComment = Comment.build({ ...req.body, origin });
   try {
     await newComment.save();
   } catch (error) {
+    res.body(error);
     res.sendStatus(422);
     return;
   }
