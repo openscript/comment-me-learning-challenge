@@ -2,10 +2,17 @@ import { Router } from 'express';
 import Comment from '../models/comment.js';
 import { jwtVerify } from 'jose';
 import { secret } from './challenges.js';
+import { rateLimiter, RateLimiterConfig } from '../middleware/rateLimiter.js';
 
 const router = Router();
 
-router.post('/', async (req, res, next) => {
+const limiterConfig = new RateLimiterConfig({
+  windowMs: 60000, // 1 minute
+  max: 5,         // 5 requests per window
+  blockMs: 300000, // 5 minutes block
+  maxBeforeBlock: 2 // 2 windows before block
+});
+router.post('/', rateLimiter(limiterConfig), async (req, res, next) => {
   let level = 0;
   try {
     const { payload } = await jwtVerify(req.header('Authorization'), secret);
